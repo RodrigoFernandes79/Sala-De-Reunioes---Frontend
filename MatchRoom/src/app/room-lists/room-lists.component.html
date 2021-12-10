@@ -1,1 +1,36 @@
-<p>room-lists works!</p>
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Room List</a>
+    </div>
+</nav>
+<div class="container-fluid">
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Date</th>
+                <th scope="col">StartHour</th>
+                <th scope="col">EndHour</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor='let room of rooms'>
+                <td>{{room.name}} </td>
+                <td>{{ room.date }}</td>
+                <td>{{ room.startHour }}</td>
+                <td>{{ room.endHour }}</td>
+
+                <td>
+                    <button type="button" (click)="deleteRoomById(room.id)" class="btn btn-danger mr-2">Delete</button>
+                    <button type="button" (click)="getRoomById(room.id)" class="btn btn-info mr-2">Update</button>
+                    <button type="button" (click)="roomDetails(room.id)" class="btn btn-info">Details</button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+</div>
