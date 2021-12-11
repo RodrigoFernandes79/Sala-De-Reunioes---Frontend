@@ -10,22 +10,19 @@ import { RoomService } from '../room.service';
   styleUrls: ['./room-lists.component.scss']
 })
 export class RoomListsComponent implements OnInit {
+  
+  rooms:Observable<Room[]>; 
+  
 
-  rooms:Room[] =[]; 
-  router: Router;
-
-  constructor(private roomService:RoomService) { }
+  constructor(private roomService:RoomService, private router:Router) { }
 
   ngOnInit(): void {
     this.getRoom();
   }
  getRoom():void{
   
-      this.roomService.getRoom().subscribe({
-        next:room =>{
-          this.rooms =room;
-        }
-      })
+       this.rooms = this.roomService.getRoom();
+        
     } 
     deleteRoomById(id:number):void{
       this.roomService.deleteRoomById(id).subscribe({

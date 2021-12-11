@@ -1,9 +1,18 @@
 <nav class="navbar navbar-dark bg-dark">
-    <div class="container">
+    <div class="container-fluid" style="justify-content:start;">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <a class="navbar-brand" href="#">Room List</a>
+
+        <div class="navbar-nav">
+            <a class="nav-link active" [routerLink]="['/add']">Add Rooms</a>
+        </div>
     </div>
 </nav>
-<div class="container-fluid">
+
+
+<div class="container">
 
     <table class="table table-striped">
         <thead>
@@ -16,13 +25,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor='let room of rooms'>
+            <tr *ngFor="let room of rooms | async">
                 <td>{{room.name}} </td>
                 <td>{{ room.date }}</td>
                 <td>{{ room.startHour }}</td>
                 <td>{{ room.endHour }}</td>
 
-                <td>
+                <td style="white-space: nowrap;">
                     <button type="button" (click)="deleteRoomById(room.id)" class="btn btn-danger mr-2">Delete</button>
                     <button type="button" (click)="getRoomById(room.id)" class="btn btn-info mr-2">Update</button>
                     <button type="button" (click)="roomDetails(room.id)" class="btn btn-info">Details</button>

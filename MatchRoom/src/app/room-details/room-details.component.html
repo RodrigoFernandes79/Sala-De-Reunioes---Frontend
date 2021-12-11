@@ -1,1 +1,24 @@
-<p>room-details works!</p>
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1">Room Details</span>
+    </div>
+</nav>
+
+<div *ngIf="room">
+    <div>
+        <label><p>Name</p></label>{{room.name}}
+    </div>
+    <div>
+        <label><p>Date</p></label>{{room.date}}
+    </div>
+    <div>
+        <label><p>startHour</p></label>{{room.startHour}}
+    </div>
+    <div>
+        <label><p>endHour</p></label>{{room.endHour}}
+    </div>
+
+</div>
+<div>
+    <button (click)="List()" class="btn btn-primary">Back to the Button list</button>
+</div>

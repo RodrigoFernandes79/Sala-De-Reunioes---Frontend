@@ -8,6 +8,7 @@ import { Room } from './room';
   providedIn: 'root'
 })
 export class RoomService {
+  
 
   private courseUrl:string = 'http://localhost:8080/rooms'
 
@@ -22,5 +23,10 @@ export class RoomService {
   getRoomById(id:number):Observable<Room>{
     return this.httpClient.get<Room>(`${this.courseUrl}/${id}`)
   }
-
+  createRoom(room:Room):Observable<Room>{
+    return this.httpClient.post<Room>(this.courseUrl, room)
+  }
+  updateRoom(id: number, room: any): Observable<Object> {
+    return this.httpClient.put(`${this.courseUrl}/${id}`, room);
+  }
 }

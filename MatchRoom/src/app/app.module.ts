@@ -4,25 +4,28 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CreateRoomComponent } from './create-room/create-room.component';
-import { RoomDetailsComponent } from './room-details/room-details.component';
 import { RoomListsComponent } from './room-lists/room-lists.component';
-import { UpdateRoomComponent } from './update-room/update-room.component';
+
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http'
+import { FormsModule } from '@angular/forms';
+import { UpdateRoomsComponent } from './update-rooms/update-rooms.component';
+import { RoomDetailsComponent } from './room-details/room-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateRoomComponent,
-    RoomDetailsComponent,
+    UpdateRoomsComponent,
     RoomListsComponent,
-    UpdateRoomComponent
+    RoomDetailsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

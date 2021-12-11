@@ -4,18 +4,19 @@ import { Room } from '../room';
 import { RoomService } from '../room.service';
 
 @Component({
-  selector: 'app-room-details',
-  templateUrl: './room-details.component.html',
-  styleUrls: ['./room-details.component.scss']
+  selector: 'app-update-rooms',
+  templateUrl: './update-rooms.component.html',
+  styleUrls: ['./update-rooms.component.scss']
 })
-export class RoomDetailsComponent implements OnInit {
+export class UpdateRoomsComponent implements OnInit {
 
   id:number;
   room:Room;
+  submitted =false;
 
   constructor(private route:ActivatedRoute, private router:Router, private roomService:RoomService) { }
 
-  ngOnInit(): void {
+  ngOnInit():void {
     this.room = new Room();
     this.id = this.route.snapshot.params['id'];
 
@@ -27,8 +28,17 @@ export class RoomDetailsComponent implements OnInit {
     error => console.log(error)
     )
   }
-  List(): void{
+updateRoom(): void{
+  this.roomService.updateRoom(this.id, this.room)
+    .subscribe(data => console.log(data), error=>console.log(error));
+    this.room=new Room();
+    this.goToList();
+  }
+  onSubmit(){
+    this.updateRoom();
+  }
+  goToList(): void{
     this.router.navigate(['/rooms']);
   }
-
 }
+
